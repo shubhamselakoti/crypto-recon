@@ -24,7 +24,7 @@ A polished, production-quality fintech web application that reconciles crypto tr
 ### 1. Clone and install dependencies
 
 ```bash
-git clone <repo>
+git clone https://github.com/shubhamselakoti/crypto-recon.git
 cd crypto-recon
 npm run install:all
 ```
