@@ -70,7 +70,8 @@ export default function Report() {
   const handleExport = async () => {
     setExporting(true);
     try {
-      const res = await getReport(runId, { page: 1, limit: 15, category, search });
+      const total = data?.pagination?.total || 1000;
+      const res = await getReport(runId, { page: 1, limit: total, category, search });
       exportCSV(res.data.results);
     } catch (err) {
       console.error('Export failed', err);
