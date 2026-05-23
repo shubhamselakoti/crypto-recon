@@ -40,6 +40,13 @@ function validateRow(row, rowNumber, source) {
 
   const qty = parseQuantity(row.quantity);
   if (qty === null) errors.push('invalid or missing quantity');
+  else if (qty <= 0) errors.push(`negative or zero quantity (${qty})`);
+
+  const price = parseQuantity(row.price_usd);
+  if (price !== null && price < 0) errors.push(`negative price_usd (${price})`);
+
+  const fee = parseQuantity(row.fee);
+  if (fee !== null && fee < 0) errors.push(`negative fee (${fee})`);
 
   const ts = parseTimestamp(row.timestamp);
   if (ts === null) errors.push('invalid or missing timestamp');
