@@ -7,10 +7,10 @@ A polished, production-quality fintech web application that reconciles crypto tr
 ## 📸 System Workflow
 
 ### System Architecture
-![System Architecture](system_architecture_sample/architecture.png)
+![System Architecture](system_architecture_sample/cryptorecon_architecture.svg)
 
 ### Reconciliation Workflow
-![Reconciliation Workflow](system_architecture_sample/workflow.png)
+![Reconciliation Workflow](system_architecture_sample/cryptorecon_workflow.svg)
 
 ---
 
