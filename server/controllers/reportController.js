@@ -63,3 +63,15 @@ exports.getUnmatched = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.getAllRuns = async (req, res) => {
+  try {
+    const runs = await ReconciliationRun.find({})
+      .sort({ createdAt: -1 })
+      .limit(20)
+      .lean();
+    res.json({ runs });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
