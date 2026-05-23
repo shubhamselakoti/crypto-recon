@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
@@ -6,7 +6,6 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Legend,
 } from 'recharts';
 import StatCard from '../components/StatCard.jsx';
-import { getAllRuns } from '../api/index.js';
 
 const COLORS = ['#43e97b', '#f6d365', '#ff6b6b', '#a18cd1'];
 
@@ -23,16 +22,9 @@ const CustomTooltip = ({ active, payload }) => {
 };
 
 export default function Dashboard() {
-  const [runs, setRuns] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [runs] = useState([]);
+  const [loading] = useState(false);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    getAllRuns()
-      .then((res) => setRuns(res.data.runs || []))
-      .catch(() => setRuns([]))
-      .finally(() => setLoading(false));
-  }, []);
 
   const latest = runs[0];
   const summary = latest?.summary || {};

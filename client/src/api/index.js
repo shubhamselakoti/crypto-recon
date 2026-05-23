@@ -15,5 +15,3 @@ export const getReport = (runId, params) => api.get(`/report/${runId}`, { params
 export const getSummary = (runId) => api.get(`/report/${runId}/summary`);
 
 export const getUnmatched = (runId) => api.get(`/report/${runId}/unmatched`);
-
-export const getAllRuns = () => api.get('/report/runs');

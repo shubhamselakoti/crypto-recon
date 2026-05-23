@@ -4,11 +4,7 @@ A polished, production-quality fintech web application that reconciles crypto tr
 
 ---
 
-## 📸 Screenshots
 
-> Upload Page → Configure Tolerances → View Reconciliation Report with filters, pagination, and CSV export.
-
----
 
 ## 🚀 Quick Start
 
@@ -20,7 +16,7 @@ A polished, production-quality fintech web application that reconciles crypto tr
 ### 1. Clone and install dependencies
 
 ```bash
-git clone <repo>
+git clone https://github.com/shubhamselakoti/crypto-recon.git
 cd crypto-recon
 npm run install:all
 ```
@@ -155,7 +151,6 @@ Duplicate matches are prevented — each exchange transaction can only match one
 |--------|--------------------------------|------------------------------------|
 | POST   | `/api/upload`                  | Upload CSVs (multipart/form-data)  |
 | POST   | `/api/reconcile`               | Run reconciliation engine          |
-| GET    | `/api/report/runs`             | List all reconciliation runs       |
 | GET    | `/api/report/:runId`           | Full paginated report              |
 | GET    | `/api/report/:runId/summary`   | Summary counts only                |
 | GET    | `/api/report/:runId/unmatched` | Unmatched rows only                |
@@ -226,10 +221,10 @@ Response:
 
 ## 🛠️ Tech Stack
 
-| Layer     | Technology                        |
+| Layer     | Technology                       |
 |-----------|----------------------------------|
 | Frontend  | React 18 + Vite, JSX only        |
-| Styling   | Tailwind CSS, Claymorphism        |
+| Styling   | Tailwind CSS, Claymorphism       |
 | Animation | Framer Motion                    |
 | Charts    | Recharts                         |
 | HTTP      | Axios                            |

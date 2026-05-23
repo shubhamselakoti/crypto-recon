@@ -57,6 +57,7 @@ export default function Report() {
   const [category, setCategory] = useState('');
   const [search, setSearch] = useState('');
   const [searchInput, setSearchInput] = useState('');
+  const [exporting, setExporting] = useState(false);
 
   const fetchReport = useCallback(() => {
     setLoading(true);
@@ -65,6 +66,18 @@ export default function Report() {
       .catch((err) => setError(err.response?.data?.error || 'Failed to load report'))
       .finally(() => setLoading(false));
   }, [runId, page, category, search]);
+
+  const handleExport = async () => {
+    setExporting(true);
+    try {
+      const res = await getReport(runId, { page: 1, limit: 15, category, search });
+      exportCSV(res.data.results);
+    } catch (err) {
+      console.error('Export failed', err);
+    } finally {
+      setExporting(false);
+    }
+  };
 
   useEffect(() => { fetchReport(); }, [fetchReport]);
 
@@ -107,10 +120,19 @@ export default function Report() {
           <p className="text-xs text-gray-500 font-mono mt-0.5">{runId}</p>
         </div>
         <button
-          onClick={() => results.length > 0 && exportCSV(results)}
-          className="clay-btn px-4 py-2.5 rounded-2xl text-sm font-medium text-gray-700 flex items-center gap-2"
+          onClick={handleExport}
+          disabled={exporting}
+          className="clay-btn px-4 py-2.5 rounded-2xl text-sm font-medium text-gray-700 flex items-center gap-2 disabled:opacity-50"
         >
-          <span>⬇</span> Export CSV
+          {exporting ? (
+            <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
+            </svg>
+          ) : (
+            <span>⬇</span>
+          )}
+          {exporting ? 'Exporting…' : 'Export CSV'}
         </button>
       </div>
 

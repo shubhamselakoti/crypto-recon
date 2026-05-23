@@ -1,6 +1,5 @@
 const ReconciliationRun = require('../models/ReconciliationRun');
 const ReconciliationResult = require('../models/ReconciliationResult');
-
 exports.getFullReport = async (req, res) => {
   try {
     const { runId } = req.params;
@@ -60,18 +59,6 @@ exports.getUnmatched = async (req, res) => {
       category: { $in: ['unmatched_user', 'unmatched_exchange'] },
     }).lean();
     res.json({ results });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-};
-
-exports.getAllRuns = async (req, res) => {
-  try {
-    const runs = await ReconciliationRun.find({ status: 'completed' })
-      .sort({ createdAt: -1 })
-      .limit(20)
-      .lean();
-    res.json({ runs });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
