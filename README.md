@@ -4,7 +4,15 @@ A polished, production-quality fintech web application that reconciles crypto tr
 
 ---
 
+## 📸 System Workflow
 
+### System Architecture
+![System Architecture](system_architecture_sample/architecture.png)
+
+### Reconciliation Workflow
+![Reconciliation Workflow](system_architecture_sample/workflow.png)
+
+---
 
 ## 🚀 Quick Start
 
@@ -16,7 +24,7 @@ A polished, production-quality fintech web application that reconciles crypto tr
 ### 1. Clone and install dependencies
 
 ```bash
-git clone https://github.com/shubhamselakoti/crypto-recon.git
+git clone <repo>
 cd crypto-recon
 npm run install:all
 ```
@@ -221,10 +229,10 @@ Response:
 
 ## 🛠️ Tech Stack
 
-| Layer     | Technology                       |
+| Layer     | Technology                        |
 |-----------|----------------------------------|
 | Frontend  | React 18 + Vite, JSX only        |
-| Styling   | Tailwind CSS, Claymorphism       |
+| Styling   | Tailwind CSS, Claymorphism        |
 | Animation | Framer Motion                    |
 | Charts    | Recharts                         |
 | HTTP      | Axios                            |
