@@ -20,6 +20,8 @@ app.use('/api', reportRoutes);
 
 app.get('/api/health', (req, res) => res.json({ status: 'ok' }));
 
+app.get('/', (req, res) => res.send("Kaam pe lag ja!!!!"))
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
